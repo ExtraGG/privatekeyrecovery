@@ -5,7 +5,7 @@ module.exports = {
 		'json'
 	],
 	transform: {
-		'^.+\\.(ts|tsx)$': './node_modules/ts-jest/preprocessor.js'
+		'^.+\\.(ts|tsx)$': 'ts-jest'
 	},
 	testMatch: [
 		'**/test/**/*.test.(ts|js)'

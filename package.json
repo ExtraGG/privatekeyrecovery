@@ -2,19 +2,11 @@
   "name": "npm-module-boilerplate",
   "version": "1.0.0",
   "description": "Boilerplate for npm modules with ES6 features and syntax",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "clean": "rimraf lib",
-    "start": "cd lib && node index.js",
-    "test": "jest --forceExit --coverage --verbose",
-    "test:prod": "cross-env BABEL_ENV=production npm run test",
-    "test:only": "mocha --require babel-core/register --require babel-polyfill --recursive",
-    "test:watch": "npm test -- --watch",
-    "test:examples": "node examples/",
-    "cover": "istanbul cover _mocha -- --require babel-core/register --require babel-polyfill --recursive",
-    "lint": "eslint src test",
-    "build": "tsc -p tsconfig.json",
-    "prepublish": "npm run clean && npm run lint && npm run test && npm run build"
+    "start": "cd dist && node index.js",
+    "test": "jest --forceExit --coverage --verbose --watch",
+    "build": "tsc -p tsconfig.json"
   },
   "files": [
     "lib",
@@ -25,11 +17,9 @@
     "url": "git+https://github.com/GuusBaggen/privatekeyrecovery.git"
   },
   "keywords": [
-    "boilerplate",
-    "npm",
-    "module",
-    "node",
-    "javascript"
+    "private",
+    "key",
+    "recovery"
   ],
   "author": "Guus Baggen <baggenguus@gmail.com>",
   "license": "",
@@ -41,24 +31,12 @@
     "bs58": "4.0.1"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.8.8",
     "@types/node": "^10.10.3",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.1",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-minify": "^0.3.0",
-    "chai": "^4.1.2",
     "cross-env": "^5.1.3",
-    "eslint": "^4.16.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0",
-    "istanbul": "^1.0.0-alpha",
     "jest": "^23.6.0",
-    "mocha": "^5.0.0",
     "rimraf": "^2.6.2",
-    "ts-jest": "^23.10.1"
+    "ts-jest": "^23.10.1",
+    "typescript": "^3.0.3"
   }
 }
