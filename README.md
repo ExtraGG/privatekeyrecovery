@@ -2,7 +2,6 @@
 
 ![Build Status](https://travis-ci.org/GuusBaggen/privatekeyrecovery.svg?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
 ![dependencies](https://img.shields.io/hackage-deps/v/lens.svg)
 
 # Features
