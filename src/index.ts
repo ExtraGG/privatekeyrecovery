@@ -33,31 +33,4 @@ export default function recover
       return joinedKey
     }
   }
-
-
 }
-// correct key: KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1
-
-
-// // start with 55000000
-// const atTheEnd = 'KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy?????'
-// recover(atTheEnd, 100000, 55000000)
-
-// start with: 571000000
-// const allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1'
-// recover(allOverThePlace, 100000)
-
-// // start with 492300000
-// const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
-// recover(atTheBeginning, 100000, 492300000);
-
-
-// Implement question marks replacement for where it is unknown. <-- Finished!
-// cleanup code
-// Add public key method
-// Add quick method if least 5 characters or less are unknown at the end, <-- postponed
-// start with the amount of unknown characters as beginning iterator. <-- done
-// end iterator by count of question marks (58^X) <-- done
-// Publish it as an NPM package
-// Make it work when the private key is 51 characters long. 
-// Make it work when the private key is in non-WIF.

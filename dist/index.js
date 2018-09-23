@@ -1,15 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils_1 = require("./utils");
-// Implement question marks replacement for where it is unknown. <-- Finished!
-// cleanup code
-// Add public key method
-// Add quick method if least 5 characters or less are unknown at the end,
-// start with the amount of unknown characters as beginning iterator.
-// end iterator by count of question marks (58^X) <-- done
-// Publish it as an NPM package
-// Make it work when the private key is 51 characters long. 
-// Make it work when the private key is in non-WIF.
 function recover(brokenKey, updateFrequency, iteratorStart) {
     if (updateFrequency === void 0) { updateFrequency = 100000; }
     if (iteratorStart === void 0) { iteratorStart = 0; }
@@ -17,7 +8,6 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
     if (iteratorStart === 0) {
         iteratorStart = Math.pow(58, (splitKey.length - 2));
     }
-    console.log(utils_1.encode(iteratorStart));
     var duration = Math.pow(58, (splitKey.length - 1));
     var _loop_1 = function (i) {
         var keyPowder = utils_1.encode(i).split("");
@@ -48,14 +38,4 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
     }
 }
 exports.default = recover;
-// correct key: KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1
-// // start with 55000000
-// const atTheEnd = 'KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy?????'
-// recover(atTheEnd, 100000, 55000000)
-// start with: 571000000
-var allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1';
-recover(allOverThePlace, 100000);
-// // start with 492300000
-// const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
-// recover(atTheBeginning, 100000, 492300000);
 //# sourceMappingURL=index.js.map
