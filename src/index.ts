@@ -42,24 +42,20 @@ function decode(input: string) {
   }
 }
 
-export default function recover(brokenKey: string, updateFrequency: number = 100000, iteratorStart: number = 0, unkownChars?: number) {
-  let tempKey = '';
+export default function recover(brokenKey: string, updateFrequency: number = 100000, iteratorStart: number = 0, unknownChars?: number) {
 
-  for (let i = iteratorStart; i < 670000000; i++) {
-
-    const amountOfQuestionMarks = brokenKey.split("?");
-    let keyPowder = encode(i)
-    let powder = keyPowder.split("");
-
-    const newKey = amountOfQuestionMarks.map((e, index) => {
-      if (!powder[index]) {
-        powder[index] = ""
+  const splitKey = brokenKey.split("?");
+  console.log(splitKey.length);
+  var duration = Math.pow(58, (splitKey.length - 1));
+  for (let i = iteratorStart; i < duration; i++) {
+    let keyPowder = encode(i).split("");
+    const newKey = splitKey.map((e, index) => {
+      if (!keyPowder[index]) {
+        keyPowder[index] = ""
       }
-      var result = e + powder[index]
-      return result;
+      return e + keyPowder[index]
     })
     const joinedKey = newKey.join('');
-
 
     if (!decode(joinedKey)) {
       if (i % updateFrequency === 0) {
@@ -87,4 +83,4 @@ recover(atTheEnd, 100000, 55000000, 5)
 // start with 492300000
 const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
 
-recover(atTheBeginning, 100000, 492300000);
+recover(atTheBeginning, 100000, 492300000, 5);

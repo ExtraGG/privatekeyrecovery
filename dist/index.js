@@ -39,20 +39,19 @@ function decode(input) {
         return true;
     }
 }
-function recover(brokenKey, updateFrequency, iteratorStart) {
+function recover(brokenKey, updateFrequency, iteratorStart, unknownChars) {
     if (updateFrequency === void 0) { updateFrequency = 100000; }
     if (iteratorStart === void 0) { iteratorStart = 0; }
-    var tempKey = '';
+    var splitKey = brokenKey.split("?");
+    console.log(splitKey.length);
+    var duration = Math.pow(58, (splitKey.length - 1));
     var _loop_1 = function (i) {
-        var amountOfQuestionMarks = brokenKey.split("?");
-        var keyPowder = encode(i);
-        var powder = keyPowder.split("");
-        var newKey = amountOfQuestionMarks.map(function (e, index) {
-            if (!powder[index]) {
-                powder[index] = "";
+        var keyPowder = encode(i).split("");
+        var newKey = splitKey.map(function (e, index) {
+            if (!keyPowder[index]) {
+                keyPowder[index] = "";
             }
-            var result = e + powder[index];
-            return result;
+            return e + keyPowder[index];
         });
         var joinedKey = newKey.join('');
         if (!decode(joinedKey)) {
@@ -60,7 +59,6 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
                 console.log(('Program is at: ' + (i / 670000000 * 100).toPrecision(3) + '%'));
                 console.log('It tried it with: ' + encode(i));
                 console.log(i);
-                console.log(joinedKey);
             }
             return "continue";
         }
@@ -69,7 +67,7 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
             return { value: joinedKey };
         }
     };
-    for (var i = iteratorStart; i < 670000000; i++) {
+    for (var i = iteratorStart; i < duration; i++) {
         var state_1 = _loop_1(i);
         if (typeof state_1 === "object")
             return state_1.value;
@@ -79,9 +77,11 @@ exports.default = recover;
 // correct key: KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1
 // start with: 571000000
 var allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1';
+recover(allOverThePlace, 100000, 571000000, 5);
 // start with 55000000
 var atTheEnd = 'KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy?????';
+recover(atTheEnd, 100000, 55000000, 5);
 // start with 492300000
 var atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
-recover(atTheBeginning, 100000, 492300000);
+recover(atTheBeginning, 100000, 492300000, 5);
 //# sourceMappingURL=index.js.map
