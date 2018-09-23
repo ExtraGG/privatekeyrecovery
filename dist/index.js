@@ -23,11 +23,12 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
                 console.log("Program is at: " + (i / duration * 100).toPrecision(3) + "%");
                 console.log("It tried it with: " + utils_1.encode(i));
                 console.log(i);
+                console.log("Current try: " + joinedKey);
             }
             return "continue";
         }
         else {
-            console.log(joinedKey);
+            console.log("Private key found: " + joinedKey);
             return { value: joinedKey };
         }
     };

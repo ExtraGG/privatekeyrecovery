@@ -26,10 +26,11 @@ export default function recover
         console.log(`Program is at: ${(i / duration * 100).toPrecision(3)}%`)
         console.log(`It tried it with: ${encode(i)}`)
         console.log(i)
+        console.log(`Current try: ${joinedKey}`);
       }
       continue
     } else {
-      console.log(joinedKey)
+      console.log(`Private key found: ${joinedKey}`)
       return joinedKey
     }
   }

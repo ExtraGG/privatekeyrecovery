@@ -28,7 +28,6 @@ function decode(input) {
         return false;
     }
     else {
-        console.log(input);
         return true;
     }
 }
