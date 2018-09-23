@@ -3,8 +3,8 @@ import { encode, decode } from './utils';
 // Implement question marks replacement for where it is unknown. <-- Finished!
 // cleanup code
 // Add public key method
-// Add quick method if least 5 characters or less are unknown at the end,
-// start with the amount of unknown characters as beginning iterator.
+// Add quick method if least 5 characters or less are unknown at the end, <-- postponed
+// start with the amount of unknown characters as beginning iterator. <-- done
 // end iterator by count of question marks (58^X) <-- done
 // Publish it as an NPM package
 // Make it work when the private key is 51 characters long. 
@@ -19,8 +19,6 @@ export default function recover
 
   const splitKey = brokenKey.split("?");
   if (iteratorStart === 0) { iteratorStart = Math.pow(58, (splitKey.length - 2)) }
-
-  console.log(encode(iteratorStart))
 
   var duration = Math.pow(58, (splitKey.length - 1));
   for (let i = iteratorStart; i < duration; i++) {
