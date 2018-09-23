@@ -17,9 +17,11 @@ export default function recover
   iteratorStart: number = 0
   ) {
 
-  if (!iteratorStart) { }
   const splitKey = brokenKey.split("?");
-  console.log(splitKey.length);
+  if (iteratorStart === 0) { iteratorStart = Math.pow(58, (splitKey.length - 2)) }
+
+  console.log(encode(iteratorStart))
+
   var duration = Math.pow(58, (splitKey.length - 1));
   for (let i = iteratorStart; i < duration; i++) {
     let keyPowder = encode(i).split("");
@@ -33,7 +35,7 @@ export default function recover
 
     if (!decode(joinedKey)) {
       if (i % updateFrequency === 0) {
-        console.log(`Program is at:  ${(i / duration * 100).toPrecision(3)}%`)
+        console.log(`Program is at: ${(i / duration * 100).toPrecision(3)}%`)
         console.log(`It tried it with: ${encode(i)}`)
         console.log(i)
       }
@@ -55,7 +57,7 @@ export default function recover
 
 // start with: 571000000
 const allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1'
-recover(allOverThePlace, 100000, 571000000)
+recover(allOverThePlace, 100000)
 
 // // start with 492300000
 // const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';

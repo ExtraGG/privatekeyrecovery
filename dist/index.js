@@ -13,9 +13,11 @@ var utils_1 = require("./utils");
 function recover(brokenKey, updateFrequency, iteratorStart) {
     if (updateFrequency === void 0) { updateFrequency = 100000; }
     if (iteratorStart === void 0) { iteratorStart = 0; }
-    if (!iteratorStart) { }
     var splitKey = brokenKey.split("?");
-    console.log(splitKey.length);
+    if (iteratorStart === 0) {
+        iteratorStart = Math.pow(58, (splitKey.length - 2));
+    }
+    console.log(utils_1.encode(iteratorStart));
     var duration = Math.pow(58, (splitKey.length - 1));
     var _loop_1 = function (i) {
         var keyPowder = utils_1.encode(i).split("");
@@ -28,7 +30,7 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
         var joinedKey = newKey.join('');
         if (!utils_1.decode(joinedKey)) {
             if (i % updateFrequency === 0) {
-                console.log(("Program is at:  " + (i / duration * 100).toPrecision(3) + "%"));
+                console.log("Program is at: " + (i / duration * 100).toPrecision(3) + "%");
                 console.log("It tried it with: " + utils_1.encode(i));
                 console.log(i);
             }
@@ -52,7 +54,7 @@ exports.default = recover;
 // recover(atTheEnd, 100000, 55000000)
 // start with: 571000000
 var allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1';
-recover(allOverThePlace, 100000, 571000000);
+recover(allOverThePlace, 100000);
 // // start with 492300000
 // const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
 // recover(atTheBeginning, 100000, 492300000);
