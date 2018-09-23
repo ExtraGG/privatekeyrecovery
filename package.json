@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "Private key recovery script to brute-force broken private keys in WIF.",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "start": "cd dist && node index.js",
     "test": "jest --forceExit --coverage --verbose",
