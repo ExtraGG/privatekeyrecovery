@@ -1,6 +1,6 @@
 # Bitcoin private key recovery
 
-[![Build Status](https://travis-ci.org/GuusBaggen/privatekeyrecovery.svg?branch=master)] 
+![Build Status](https://travis-ci.org/GuusBaggen/privatekeyrecovery.svg?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # Features
