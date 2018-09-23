@@ -1,35 +1,36 @@
 const base58 = require('bs58')
 const crypto = require('crypto')
 
-function encode(enc) {
-  const alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'
-  const base = alphabet.length
+function encode(enc: number) {
+  var alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'
+  var base = alphabet.length
   if (typeof enc !== 'number') { throw Error('"encode" only accepts integers.') }
   var encoded = ''
   while (enc) {
-    const remainder = enc % base
+    var remainder = enc % base
     enc = Math.floor(enc / base)
     encoded = alphabet[remainder].toString() + encoded
   }
   return encoded
 }
 
-function decode(string) {
-  const buffer = Buffer.from(base58.decode(string))
-  let prefix = buffer.slice(0, 1)
-  let data = buffer.slice(1, -4)
-  let hash = Buffer.concat([prefix, data])
+function decode(input: string) {
+  var buffer = Buffer.from(base58.decode(input))
+  var prefix = buffer.slice(0, 1)
+  var data = buffer.slice(1, -4)
+  var hash = Buffer.concat([prefix, data])
   hash = crypto.createHash('sha256').update(hash).digest()
   hash = crypto.createHash('sha256').update(hash).digest()
   if (!buffer.slice(-4).equals(hash.slice(0, 4))) {
     return false
   } else {
-    console.log(string)
+    console.log(input)
     return true
   }
 }
-module.exports.recover = function (brokenKey, updateFrequency = 100000) {
-  var tempkey = ''
+
+export default function recover(brokenKey: string, updateFrequency = 100000) {
+  this.tempKey = ''
   // Implement question marks replacement for where it is unknown.
   // cleanup code
   // Add public key method
@@ -37,19 +38,19 @@ module.exports.recover = function (brokenKey, updateFrequency = 100000) {
   // start with the amount of unknown characters as beginning iterator.
   // end iterator by count of question marks (58^X)
   // Publish it as an NPM package
-  for (let i = 0; i < 670000000; i++) {
+  for (let i = 55000000; i < 670000000; i++) {
     if (!decode(this.tempKey)) {
-      tempKey = brokenKey + encode(i)
+      this.tempKey = brokenKey + encode(i)
       if (i % updateFrequency === 0) {
         console.log(('Program is at: ' + (i / 670000000 * 100).toPrecision(3) + '%'))
         console.log('It tried it with: ' + encode(i))
         console.log(i)
-        console.log(tempKey)
+        console.log(this.tempKey)
       }
       continue
     } else {
-      console.log(tempKey)
-      return tempkey
+      console.log(this.tempKey)
+      return this.tempKey
     }
   }
 }
