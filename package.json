@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cd dist && node index.js",
     "test": "jest --forceExit --coverage --verbose --watch",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "debug": "yarn build && yarn start"
   },
   "files": [
     "lib",
