@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-- '0.10'
+- '8.11.3'
 before_install:
-- npm install -g typescript@1.0
+- npm install -g typescript@2.9.2
 script:
 - npm test
