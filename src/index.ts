@@ -32,37 +32,57 @@ function decode(input: string) {
 
 export default function recover(brokenKey: string, updateFrequency = 100000) {
   let tempKey = '';
-  const i = 55030230;
-  const amountOfQuestionMarks = brokenKey.split("?");
-  console.log(amountOfQuestionMarks);
-  const keyPowder = encode(i)
 
-  // Implement question marks replacement for where it is unknown.
-  // cleanup code
-  // Add public key method
-  // Add quick method if least 5 characters or less are unknown at the end,
-  // start with the amount of unknown characters as beginning iterator.
-  // end iterator by count of question marks (58^X)
-  // Publish it as an NPM package
+  for (let i = 568000000; i < 670000000; i++) {
 
-  // for (let i = 55000000; i < 670000000; i++) {
-  //   if (!decode(tempKey)) {
-  //     tempKey = brokenKey + encode(i)
-  //     if (i % updateFrequency === 0) {
-  //       console.log(('Program is at: ' + (i / 670000000 * 100).toPrecision(3) + '%'))
-  //       console.log('It tried it with: ' + encode(i))
-  //       console.log(i)
-  //       console.log(tempKey)
-  //     }
-  //     continue
-  //   } else {
-  //     console.log(tempKey)
-  //     return tempKey
-  //   }
-  // }
+    const amountOfQuestionMarks = brokenKey.split("?");
+    // console.log(amountOfQuestionMarks);
+    let keyPowder = encode(i)
+    let powder = keyPowder.split("");
+    // console.log(powder);
+
+    const newKey = amountOfQuestionMarks.map((e, index) => {
+      if (!powder[index]) {
+        // console.log("h");
+        powder[index] = ""
+      }
+      var result = e + powder[index]
+      return result;
+    })
+    const joinedKey = newKey.join('');
+    // console.log(newKey);
+    // console.log(joinedKey);
+
+
+
+    // Implement question marks replacement for where it is unknown.
+    // cleanup code
+    // Add public key method
+    // Add quick method if least 5 characters or less are unknown at the end,
+    // start with the amount of unknown characters as beginning iterator.
+    // end iterator by count of question marks (58^X)
+    // Publish it as an NPM package
+
+    if (!decode(joinedKey)) {
+      if (i % updateFrequency === 0) {
+        console.log(('Program is at: ' + (i / 670000000 * 100).toPrecision(3) + '%'))
+        console.log('It tried it with: ' + encode(i))
+        console.log(i)
+        console.log(tempKey)
+      }
+      continue
+    } else {
+      console.log(tempKey)
+      return tempKey
+    }
+  }
 
 
 }
 // correct key: KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1
 
-recover('KwN?yX9f7WSjXNPjn?aefBohLwG9G?K6Y7VhvJ?SwsxL8?y5Txq1');
+const allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1'
+const atTheEnd = 'KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy?????'
+const atTheBeginning = '?????KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy';
+
+recover(allOverThePlace);
