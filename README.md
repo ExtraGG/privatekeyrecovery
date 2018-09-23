@@ -1,10 +1,9 @@
 # Bitcoin private key recovery
 
 ![Build Status](https://travis-ci.org/GuusBaggen/privatekeyrecovery.svg?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ![dependencies](https://img.shields.io/hackage-deps/v/lens.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)(https://opensource.org/licenses/MIT)]
-
-
 
 # Features
 Recover a broken private key that misses up to 5 characters. It brute forces its way until the checksum is correct for the private key. Make sure to place '?' at places where the characters are unknown. Currently only 52 character WIF keys are supported. 
