@@ -44,8 +44,8 @@ export default function recover
 // recover(atTheEnd, 100000, 55000000)
 
 // start with: 571000000
-const allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1'
-recover(allOverThePlace, 100000)
+// const allOverThePlace = 'KwNryX9f7W?jXNPjn?aefBoh?wG9GPK6Y7Vh?JKSwsxL8oy5T?q1'
+// recover(allOverThePlace, 100000)
 
 // // start with 492300000
 // const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';

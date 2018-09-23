@@ -1,5 +1,7 @@
 require("source-map-support").install();
 import recover from '../src/index';
+import { encode, decode } from '../src/utils';
+
 
 describe('Recover.', () => {
   it('should return the private key', () => {
@@ -16,5 +18,17 @@ describe('Recover.', () => {
     const atTheBeginning = '?????X9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1';
     const expectedVal = 'KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1'
     expect(recover(atTheBeginning, 100000, 492300000)).toBe(expectedVal)
+  })
+})
+
+describe('encode', () => {
+  it('should return the right value. ', () => {
+    expect(encode(11316496)).toBe('21111');
+  })
+})
+
+describe('decode', () => {
+  it('should return true. ', () => {
+    expect(decode("KwNryX9f7WSjXNPjnsaefBohLwG9GPK6Y7VhvJKSwsxL8oy5Txq1")).toBeTruthy();
   })
 })
