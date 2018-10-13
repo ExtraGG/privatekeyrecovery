@@ -1,5 +1,5 @@
 require("source-map-support").install();
-import recover from '../src/index';
+import { recover } from '../src/index';
 import { encode, decode } from '../src/utils';
 
 

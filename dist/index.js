@@ -38,5 +38,5 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
             return state_1.value;
     }
 }
-exports.default = recover;
+exports.recover = recover;
 //# sourceMappingURL=index.js.map

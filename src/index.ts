@@ -1,6 +1,6 @@
 import { encode, decode } from './utils';
 
-export default function recover
+export function recover
   (
   brokenKey: string,
   updateFrequency: number = 100000,
