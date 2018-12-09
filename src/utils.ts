@@ -1,7 +1,7 @@
 const base58 = require('bs58')
 const crypto = require('crypto')
 
-export function encode(enc: number) {
+export function encode(enc: number): string {
   var alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'
   var base = alphabet.length
   if (typeof enc !== 'number') { throw Error('"encode" only accepts integers.') }
@@ -14,7 +14,7 @@ export function encode(enc: number) {
   return encoded
 }
 
-export function decode(input: string) {
+export function base58check(input: string): boolean {
   var buffer = Buffer.from(base58.decode(input))
   var prefix = buffer.slice(0, 1)
   var data = buffer.slice(1, -4)

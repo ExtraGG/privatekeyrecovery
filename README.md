@@ -16,7 +16,7 @@ npm i private-key-recovery
 
 Import it:
 ```
-var recover = require('private-key-recovery').recover
+var { recover } = require('private-key-recovery')
 ```
 
 ## Usage

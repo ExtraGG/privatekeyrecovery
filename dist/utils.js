@@ -17,7 +17,7 @@ function encode(enc) {
     return encoded;
 }
 exports.encode = encode;
-function decode(input) {
+function base58check(input) {
     var buffer = Buffer.from(base58.decode(input));
     var prefix = buffer.slice(0, 1);
     var data = buffer.slice(1, -4);
@@ -31,5 +31,5 @@ function decode(input) {
         return true;
     }
 }
-exports.decode = decode;
+exports.base58check = base58check;
 //# sourceMappingURL=utils.js.map

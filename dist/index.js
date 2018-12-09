@@ -10,26 +10,23 @@ function recover(brokenKey, updateFrequency, iteratorStart) {
     }
     var duration = Math.pow(58, (splitKey.length - 1));
     var _loop_1 = function (i) {
-        var keyPowder = utils_1.encode(i).split("");
+        var possibleKeyParts = utils_1.encode(i).split("");
         var newKey = splitKey.map(function (keyPart, index) {
-            if (!keyPowder[index]) {
-                keyPowder[index] = "";
+            if (!possibleKeyParts[index]) {
+                possibleKeyParts[index] = "";
             }
-            return keyPart + keyPowder[index];
+            return keyPart + possibleKeyParts[index];
         });
         var joinedKey = newKey.join('');
-        if (!utils_1.decode(joinedKey)) {
-            if (i % updateFrequency === 0) {
-                console.log("Program is at: " + (i / duration * 100).toPrecision(3) + "%");
-                console.log("It tried it with: " + utils_1.encode(i));
-                console.log(i);
-                console.log("Current try: " + joinedKey);
-            }
-            return "continue";
-        }
-        else {
+        if (utils_1.base58check(joinedKey)) {
             console.log("Private key found: " + joinedKey);
             return { value: joinedKey };
+        }
+        if (i % updateFrequency === 0) {
+            console.log("Program is at: " + (i / duration * 100).toPrecision(3) + "%");
+            console.log("It tried it with: " + utils_1.encode(i));
+            console.log(i);
+            console.log("Current try: " + joinedKey);
         }
     };
     for (var i = iteratorStart; i < duration; i++) {
