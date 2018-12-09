@@ -35,7 +35,7 @@ The recovered private key will show up in your logs and it will be the return va
 
 The function recover takes additional arguments. You can tell it how frequently it should log to the console (2nd argument, number) and on what number it should start with iterating (3rd argument, number).
 
-The order that is implemented in this module of base58 is
+The order of base58 that is implemented in this module is
 `123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ`
 
 So it starts at 1 and it ends on Z.
