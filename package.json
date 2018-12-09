@@ -1,6 +1,6 @@
 {
   "name": "private-key-recovery",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Private key recovery script to brute-force broken private keys in WIF.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
